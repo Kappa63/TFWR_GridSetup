@@ -101,7 +101,7 @@ def treeAndSunflowerDrone(posX, posY, toX, toY):
 	while True:
 		Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectHarvest, Entities.Sunflower)
 	
-def dinoDrone(posX, posY, toX, toY):
+def dinoDrone(posX, posY, toX, toY): # Currently Failing. Under Construction
 	Functions.droneTo(posX, posY)
 	Functions.droneSleep(2)
 	
