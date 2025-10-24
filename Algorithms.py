@@ -15,7 +15,7 @@ def isBound(row, col, gridSize):
 # 				lCopy[j], lCopy[j + 1] = lCopy[j + 1], lCopy[j]
 # 	return lCopy
 	
-def sortWithFunction(l, fn):
+def sortWithFunction(l, fn): # copied this from somewhere
 	def quicksort(arr):
 		if len(arr) <= 1:
 			return arr
