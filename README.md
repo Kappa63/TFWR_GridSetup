@@ -31,7 +31,12 @@ The farm grid is divided into four quadrants, each quadrant is divided into four
       - Two subquadrants for Pumpkin (2 Drones).
       - Two subquadrants for sorting Cacti (2 Drones).
    - Watering Drone (1 Drone)
-     
+
+![Quadrant Grid](Assets/Stats.png)
+
+## Notes
+
+Currently the Dino Drone is difficult to implement in this quadrant system as it seems to always wander off into the plantation. I simply use Dino Drone on a Full grid currently.
 
 ## Usage
 
