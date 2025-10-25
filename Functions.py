@@ -1,28 +1,44 @@
 import env
 import Calculate
 
-def droneTo(x, y):
+def droneTo(toX, toY, wrapped=True):
 	gridSize = get_world_size()
-	diffX = (x - get_pos_x() + gridSize) % gridSize
-	diffY = (y - get_pos_y() + gridSize) % gridSize
-	
-	if (diffX <= gridSize // 2):
-		for _ in range(diffX):
-			if (not move(East)):
-				return False
+	posX, posY = get_pos_x(), get_pos_y()
+
+	if wrapped:
+		diffX = (toX - posX + gridSize) % gridSize
+		diffY = (toY - posY + gridSize) % gridSize
+		if (diffX <= gridSize // 2):
+			stepsX = diffX
+		else:
+			stepsX = diffX - gridSize
+		
+		if (diffY <= gridSize // 2):
+			stepsY = diffY
+		else:
+			stepsY = diffY - gridSize
 	else:
-		for _ in range(gridSize - diffX):
-			if (not move(West)):
+		stepsX = toX- posX
+		stepsY = toY - posY
+
+	if stepsX > 0:
+		for _ in range(stepsX):
+			if not move(East):
 				return False
-	
-	if (diffY <= gridSize // 2):
-		for _ in range(diffY):
-			if (not move(North)):
+	elif stepsX < 0:
+		for _ in range(-stepsX):
+			if not move(West):
 				return False
-	else:
-		for _ in range(gridSize - diffY):
-			if (not move(South)):
+				
+	if stepsY > 0:
+		for _ in range(stepsY):
+			if not move(North):
 				return False
+	elif stepsY < 0:
+		for _ in range(-stepsY):
+			if not move(South):
+				return False
+
 	return True
 
 def perfectHarvest(seed):
@@ -53,6 +69,10 @@ def perfectPlant(seed):
 def perfectTill(ground):
 	if (get_ground_type() != ground):
 		till()
+		
+def perfectWater(_):
+	if (get_water() <= 0.65):
+		use_item(Items.Water)
 		
 def coverAreaSpiral(posX, posY, toX, toY, fn, arg, start=0, every=1):
 	droneTo(posX, posY)

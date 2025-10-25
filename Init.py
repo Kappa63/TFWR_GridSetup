@@ -18,7 +18,7 @@ def mazeDrone(posX, posY, subGridSize, freq):
 	
 			goalX, goalY = measure()
 		
-			Algorithms.mazeSolveDFS(centerX, centerY, goalX, goalY, None)
+			Algorithms.mazeSolveDFS(get_pos_x(), get_pos_y(), goalX, goalY, None)
 	
 		harvest()
 		
@@ -43,7 +43,16 @@ def wateringDrone(posX, posY, toX, toY):
 	Functions.droneSleep(2)
 	
 	while True:
-		Functions.coverAreaSpiral(posX, posY, toX, toY, use_item, Items.Water)
+		Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectWater, Items.Water)
+		
+
+def fertilizingDrone(posX, posY, toX, toY):
+	change_hat(Hats.Traffic_Cone)
+	Functions.droneTo(posX, posY)
+	Functions.droneSleep(2)
+	
+	while True:
+		Functions.coverAreaSpiral(posX, posY, toX, toY, use_item, Items.Fertilizer, 0, 4)
 				
 def pumpkinDrone(posX, posY, toX, toY):
 	change_hat(Hats.Pumpkin_Hat)
@@ -90,18 +99,27 @@ def cactusDrone(posX, posY, ToX, toY):
 		Functions.sortCacti(posX,posY, ToX,toY)
 		harvest()
 	
-def treeAndSunflowerDrone(posX, posY, toX, toY):
+def treeDrone(posX, posY, toX, toY):
+	change_hat(Hats.Tree_Hat)
+	Functions.droneTo(posX, posY)
+	Functions.droneSleep(2)
+	
+	Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectPlant, Entities.Tree, 1, 2)
+	
+	while True:
+		Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectHarvest, Entities.Tree, 1, 2)
+	
+def sunflowerDrone(posX, posY, toX, toY):
 	change_hat(Hats.Sunflower_Hat)
 	Functions.droneTo(posX, posY)
 	Functions.droneSleep(2)
 	
 	Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectPlant, Entities.Sunflower, 0, 2)
-	Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectPlant, Entities.Tree, 1, 2)
 	
 	while True:
-		Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectHarvest, Entities.Sunflower)
-	
-def dinoDrone(posX, posY, toX, toY): # Currently Failing. Under Construction
+		Functions.coverAreaSpiral(posX, posY, toX, toY, Functions.perfectHarvest, Entities.Sunflower, 0, 2)
+
+def dinoDrone(posX, posY, toX, toY):
 	Functions.droneTo(posX, posY)
 	Functions.droneSleep(2)
 	
@@ -116,11 +134,11 @@ def dinoDrone(posX, posY, toX, toY): # Currently Failing. Under Construction
 	while (get_entity_type() != Entities.Apple):
 		continue
 	while True:
-		if(get_entity_type() != Entities.Apple):
-			_rotateHat()
-		next = measure()
-		if (next == None):
-			_rotateHat()
-		nextX, nextY = next
-		if (not Functions.droneTo(nextX, nextY)):
+		#if(get_entity_type() != Entities.Apple):
+		#	_rotateHat()
+		#next = measure()
+		#if (next == None):
+		#	_rotateHat()
+		nextX, nextY = measure()
+		if (not Functions.droneTo(nextX, nextY, False)):
 			_rotateHat()
