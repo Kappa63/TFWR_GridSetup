@@ -4,23 +4,34 @@ This project provides a grid setup for the game [The Farmer Was Replaced](https:
 
 ## Overview
 
-This setup is made for 8 drones.
-The farm grid is divided into four quadrants, each serving a specific purpose:
+This branch setup is made for 22 drones.
+The farm grid is divided into four quadrants, each quadrant is divided into four subquadrants, each serving a specific purpose:
 
-1. **Maze Quadrant (1 Drone)**  
+1. **Maze Quadrant (4 Drones)**  
+   - Split into four Maze subquadrants
    - Uses an oriented Depth-First Search (DFS) to generate a path that approaches the goal efficiently.
 
-2. **Carrots & Hay Quadrant (2 Drones)**  
-   - Split into two halves: one half for carrots, the other for hay.  
+2. **Carrots & Hay Quadrant (6 Drones)**  
+   - Split into four subquadrants:
+      - Two subquadrants for Hay (2 Drones).
+      - Two subquadrants for Carrots (2 Drones).
+   - Watering Drone (1 Drone)
+   - Fertilizing Drone: Fertilizes every fourth plant (1 Drone)
 
-3. **Trees, Sunflowers & Cacti Quadrant (2 Drones)**  
-   - Split into two halves: one for trees and sunflowers, the other for cacti.  
+3. **Trees, Sunflowers & Pumpkin Quadrant (7 Drones)**  
+   - Split into four subquadrants:
+      - Two subquadrants for Pumpkins (2 Drones).
+      - Two subquadrants for Trees and Sunflowers.
+         - Even for Sunflowers (2 Drones)
+         - Odd for Trees (2 Drones)
+   - Watering Drone (1 Drone)
 
-4. **Pumpkin & Cacti Quadrant (2 Drones)**  
-   - Split into two halves: one for pumpkins, the other for cacti.
+4. **Pumpkin & Cacti Quadrant (5 Drones)**  
+   - Split into four subquadrants:
+      - Two subquadrants for Pumpkin (2 Drones).
+      - Two subquadrants for sorting Cacti (2 Drones).
+   - Watering Drone (1 Drone)
      
-- **Watering Drone (1 Drone)**  
-   - The 8th drone roams over the Carrots & Hay and Trees/Sunflowers & Cacti quadrants to water crops.
 
 ## Usage
 
