@@ -36,7 +36,7 @@ The farm grid is divided into four quadrants, each quadrant is divided into four
 
 ## Notes
 
-Currently the Dino Drone is difficult to implement in this quadrant system as it seems to always wander off into the plantation. I simply use Dino Drone on a Full grid currently.
+I am having difficulties implementing Dino Drone in this quadrant system as it seems to always wander off into the plantation. I simply use Dino Drone on a Full grid.
 
 ## Usage
 
